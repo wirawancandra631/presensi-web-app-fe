@@ -1,0 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+/* Dasar untuk semua halaman */
+.page {
+  position: absolute;
+
+  background-color: white;
+
+  /* Default state */
+  opacity: 0; /* Tidak terlihat */
+  pointer-events: none; /* Hindari interaksi selama transisi */
+
+  /* Transisi */
+  transition: opacity 0.1s ease;
+}
+.page-active {
+  opacity: 1; /* Terlihat */
+  pointer-events: auto; /* Aktifkan interaksi */
+}
