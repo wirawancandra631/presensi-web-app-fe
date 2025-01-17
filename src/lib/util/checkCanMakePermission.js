@@ -3,5 +3,5 @@ export function checkCanMakePermission(data) {
     if (data) {
         return false;
     }
-    else true;
+    else return true;
 }

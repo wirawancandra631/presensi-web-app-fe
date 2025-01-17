@@ -7,9 +7,12 @@ export const PermissionTodayContext = createContext();
 export function PermissionTodayProvider({ children }) {
   const [permissionToday, setPermissionToday] = useState(null);
   const filteredPermissionToday = () => {
-    historyPermissionTodayFetch((res) => {
-      setPermissionToday(res.data);
-    });
+    historyPermissionTodayFetch(
+      (res) => {
+        setPermissionToday(res.data);
+      },
+      () => {}
+    );
   };
   useEffect(() => {
     filteredPermissionToday();

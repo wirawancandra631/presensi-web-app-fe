@@ -1,6 +1,6 @@
 import { BASEURLGETPERMISSIONTODAY } from "./baseURL";
 
-export default async function historyPermissionTodayFetch(onSuccess, onError = () => { }) {
+export default async function historyPermissionTodayFetch(onSuccess, onError) {
     const token = localStorage.getItem("_token");
     const res = await fetch(BASEURLGETPERMISSIONTODAY, {
         headers: {

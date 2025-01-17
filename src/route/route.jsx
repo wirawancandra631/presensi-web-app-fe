@@ -100,12 +100,17 @@ const routes = [
     ],
   },
 ];
-const route = createBrowserRouter([
+const route = createBrowserRouter(
+  [
+    {
+      path: "/",
+      element: <PageLayout />,
+      children: routes,
+    },
+  ],
   {
-    path: "/",
-    element: <PageLayout />,
-    children: routes,
-  },
-]);
+    basename: "/page",
+  }
+);
 export { routes };
 export default route;
