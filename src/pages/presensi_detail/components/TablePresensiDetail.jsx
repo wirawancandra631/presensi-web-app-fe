@@ -13,11 +13,17 @@ function TablePresensiDetail() {
   const successCallback = (res) => {
     setPresensi({
       loading: false,
-      data: res.data,
+      data: res,
+    });
+  };
+  const errorCallback = (res) => {
+    setPresensi({
+      loading: false,
+      data: null,
     });
   };
   const getDetailPresensi = async () => {
-    presensiDetailFetch(id, successCallback);
+    presensiDetailFetch(id, successCallback, errorCallback);
   };
   useEffect(() => {
     getDetailPresensi();

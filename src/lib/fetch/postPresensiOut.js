@@ -1,21 +1,11 @@
 
-import { BASEURLPOSTPRESENSIOUT } from "./baseURL";
-const token = localStorage.getItem("_token");
+import { axiosInstanceTwo } from "./baseURL";
 export const postPresensiOut = async (data, onSuccess, onError) => {
-    const res = await fetch(BASEURLPOSTPRESENSIOUT, {
-        method: "POST",
-        headers: {
-            Authorization: `Bearear ${token}`,
-        },
-        body: data,
-    });;
-
-    const result = await res.json();
-    if (res.ok) {
-        onSuccess(result)
+    try {
+        const res = await axiosInstanceTwo.post("/presensi-out", data);
+        onSuccess(res.data);
     }
-    else {
-        onError(res)
-
+    catch (m) {
+        onError(m.response);
     }
 }

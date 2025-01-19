@@ -1,18 +1,11 @@
-import { BASEURLPOSTPERMISSION } from "./baseURL"
-const token = localStorage.getItem("_token");
+import { axiosInstanceTwo } from "./baseURL"
 export const postPermission = async (data, onSuccess, onError) => {
-    const res = await fetch(BASEURLPOSTPERMISSION, {
-        method: "POST",
-        headers: {
-            Authorization: `Bearear ${token}`,
-        },
-        body: data,
-    })
-    const result = await res.json();
-    if (res.ok) {
-        onSuccess(result)
+    try {
+        const res = await axiosInstanceTwo.post("/make-permission", data);
+        onSuccess(res.data.data);
     }
-    else {
-        onError(result);
+    catch (m) {
+        onError(m.response.data.message);
     }
+
 }

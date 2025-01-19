@@ -6,7 +6,7 @@ export const ProfilContext = createContext();
 export const ProfilProvider = () => {
   const [profil, setProfil] = useState(null);
   const successCallback = (res) => {
-    setProfil(res.data);
+    setProfil(res);
   };
   const getProfil = async function () {
     profilFetch(successCallback);

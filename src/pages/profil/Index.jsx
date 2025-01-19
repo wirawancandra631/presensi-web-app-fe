@@ -2,7 +2,6 @@ import React, { useContext, useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import HeaderInfo from "@/components/HeaderInfo";
 import BottomNavbar from "@/components/BottomNavbar";
-import { BASEURLCHANGEPROFIL } from "@/lib/fetch/baseURL";
 import { ProfilContext } from "@/context/ProfilContext";
 import Modal from "@/components/Modal";
 import Spiner from "@/components/Spiner";
@@ -11,7 +10,6 @@ function ProfilPage() {
   const navigate = useNavigate();
   const [modalShow, setModalShow] = useState(false);
   const { profil, getProfil } = useContext(ProfilContext);
-  const token = localStorage.getItem("_token");
   const [disabledForm, setDisabledForm] = useState(true);
   const imageRef = useRef();
   const [showImage, setShowImage] = useState(false);
@@ -30,11 +28,10 @@ function ProfilPage() {
   };
   const successCallback = () => {
     setModalShow(false);
-
     getProfil();
   };
   const errorCallback = (res) => {
-    alert(`Page error ${res.message}`);
+    alert(`Page error ${res}`);
   };
   const changeProfil = async (event) => {
     setModalShow(true);

@@ -37,7 +37,7 @@ function MakePermissionPage() {
   const errorCallback = (res) => {
     setModalShow(false);
 
-    alert(`Page error ${res.message}`);
+    alert(`Page error ${res}`);
   };
   const sendPermission = async (event) => {
     event.preventDefault();

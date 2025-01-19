@@ -10,13 +10,11 @@ export function PresensiTodayProvider({ children }) {
   const successCallback = (res) => {
     setDataPresensiToday({
       loading: false,
-      data: res.data,
+      data: res,
     });
   };
   const errorCallback = (res) => {
-    if (res.status == 404) {
-      setDataPresensiToday({ loading: false, data: null });
-    }
+    setDataPresensiToday({ loading: false, data: null });
   };
   useEffect(() => {
     historyPresensiTodayFetch(successCallback, errorCallback);

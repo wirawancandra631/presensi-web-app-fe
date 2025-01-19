@@ -1,18 +1,10 @@
-import { BASEURLCHANGEPROFIL } from "@/lib/fetch/baseURL"
-const token = localStorage.getItem("_token");
+import { axiosInstanceTwo } from "./baseURL";
 export const postProfil = async (data, onSuccess, onError) => {
-    const res = await fetch(BASEURLCHANGEPROFIL, {
-        method: "POST",
-        headers: {
-            Authorization: `Bearear ${token}`,
-        },
-        body: data,
-    });
-    const result = await res.json();
-    if (res.ok) {
-        onSuccess(result);
+    try {
+        const res = await axiosInstanceTwo.post("/profil", data);
+        onSuccess(res.data.message);
     }
-    else {
-        onError(result);
+    catch (m) {
+        onError(m.response.data.message);
     }
 }

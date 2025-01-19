@@ -1,20 +1,17 @@
-import { BASEURLLOGIN } from "./baseURL";
+import { axiosInstance } from "./baseURL";
 
 async function loginFetch(data, onSuccess, onError) {
     const form = new FormData();
     form.append("email", data.email);
     form.append("password", data.password);
-    const res = await fetch(BASEURLLOGIN, {
-        method: "POST",
-        body: form
-    })
-    const result = await res.json();
-    if (res.ok) {
-        onSuccess(result)
+    try {
+        const res = await axiosInstance.post("/login", form,);
+        onSuccess(res.data.token)
     }
-    else {
-        onError(result);
+    catch (m) {
+        onError(m.response.data.message);
     }
+
 }
 
 export default loginFetch;

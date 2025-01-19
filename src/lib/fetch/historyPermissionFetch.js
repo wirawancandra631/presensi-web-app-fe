@@ -1,17 +1,12 @@
-import { BASEURLGETPERMISSION } from "./baseURL"
+import { axiosInstanceTwo } from "./baseURL"
 
 export default async function historyPermissionFetch(month = "", year = "", onSuccess, onError) {
-    const token = localStorage.getItem("_token")
-    const res = await fetch(BASEURLGETPERMISSION + `?month=${month}&year=${year}`, {
-        headers: {
-            "Authorization": `Bearear ${token}`
-        }
-    })
-    const result = await res.json();
-    if (res.ok) {
-        onSuccess(result);
+    try {
+        const res = await axiosInstanceTwo.get(`/make-permission?month=${month}&year=${year}`);
+        onSuccess(res.data.data)
     }
-    else {
-        onError(result);
+    catch (m) {
+        onError(m.response.data.message);
     }
+
 }

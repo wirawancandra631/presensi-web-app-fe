@@ -26,17 +26,20 @@ function LoginPage() {
     }
   };
   const successCallback = (res) => {
-    localStorage.setItem("_token", res.token);
-    navigate("/");
+    localStorage.setItem("_token", res);
+    setTimeout(() => {
+      setShowSpinner(false);
+      navigate("/");
+    }, 1000);
   };
   const errorCallback = (res) => {
-    setShowAlert(res.message);
+    setShowAlert(res);
+    setShowSpinner(false);
   };
   const handleLogin = async (event) => {
     event.preventDefault();
     setShowSpinner(true);
     await loginFetch(formData, successCallback, errorCallback);
-    setTimeout(() => setShowSpinner(false), 1000);
   };
   return (
     <main className="md:w-[567px] mx-auto w-full p-4 min-h-screen flex justify-center items-center">

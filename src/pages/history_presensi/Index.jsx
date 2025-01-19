@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import HeaderInfo from "@/components/HeaderInfo";
 import BottomNavbar from "@/components/BottomNavbar";
 import MonthPicker from "@/components/MonthPicker";
@@ -19,7 +19,7 @@ function HistoryPresensiPage() {
   const successCallback = (res) => {
     setHistory({
       loading: false,
-      data: res.data,
+      data: res,
     });
   };
   const filterPresensi = async function (event) {

@@ -5,7 +5,6 @@ import { PermissionTodayContext } from "@/context/PermissionTodayContext";
 import { checkCanMakePermission } from "@/lib/util/checkCanMakePermission";
 function CardActionPermission() {
   const { permissionToday } = useContext(PermissionTodayContext);
-  console.log(checkCanMakePermission(permissionToday));
   return (
     <div className="w-[47%]  mr-2 mb-2 border border-slate-200 bg-slate-100 rounded-md">
       <div className="p-2 w-full text-center ">Pengajuan Cuti</div>

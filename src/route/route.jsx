@@ -109,7 +109,7 @@ const route = createBrowserRouter(
     },
   ],
   {
-    basename: "/page",
+    // basename: "/page",
   }
 );
 export { routes };

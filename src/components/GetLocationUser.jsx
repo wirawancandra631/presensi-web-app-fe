@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import GeolocationIcon from "../../public/img/geolocation-icon.png";
 import Modal from "./Modal";
+import Spiner from "./Spiner";
 function GetLocationUser({ onSuccess }) {
   const [modalShow, setModalShow] = useState({
     status: false,
@@ -44,7 +45,7 @@ function GetLocationUser({ onSuccess }) {
             });
           }
         );
-      }, 1000);
+      }, 100);
     } else {
       setModalShow({
         status: false,
@@ -57,7 +58,11 @@ function GetLocationUser({ onSuccess }) {
       <div className="w-full my-2 rounded-md border border-slate-200">
         <div className="w-full h-[250px] bg-slate-50 flex items-center justify-center">
           {result.latitude && result.longitude ? (
-            <div className="w-full h-full relative z-10" id="map-preview"></div>
+            <div className="w-full h-full relative z-10" id="map-preview">
+              <div className="h-[250px] flex w-full items-center justify-center">
+                <Spiner />
+              </div>
+            </div>
           ) : (
             <img
               src={GeolocationIcon}

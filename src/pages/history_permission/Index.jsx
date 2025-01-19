@@ -16,16 +16,17 @@ function HistoryPermission() {
     loading: true,
     data: [],
   });
+  const successCallback = (res) => {
+    setHistoryPermission({
+      loading: false,
+      data: res,
+    });
+  };
   const getHistoryPermission = async (event) => {
     if (event) {
       event.preventDefault();
     }
-    historyPermissionFetch(dateInfo.month, dateInfo.year, (res) =>
-      setHistoryPermission({
-        loading: false,
-        data: res.data,
-      })
-    );
+    historyPermissionFetch(dateInfo.month, dateInfo.year, successCallback);
   };
   useEffect(() => {
     getHistoryPermission();

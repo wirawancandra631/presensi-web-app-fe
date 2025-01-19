@@ -46,7 +46,7 @@ function MakePresensiInPage() {
   };
   const errorCallback = (res) => {
     setModalShow(false);
-    alert(`Page error with ${res.message}`);
+    alert(`Page error with ${res}`);
   };
   const handlePostPresensiIn = async (event) => {
     event.preventDefault();
